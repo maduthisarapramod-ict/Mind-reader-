@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Play magic calculation games and watch me read your mind: guess your age, birthday, fruit and secret numbers. English and Sinhala.">
+<meta name="theme-color" content="#0a0618">
+<meta property="og:title" content="Mind Reader – I know what you’re thinking">
+<meta property="og:description" content="Magic calculation games that guess your age, birthday, fruit and secret numbers.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔮%3C/text%3E%3C/svg%3E">
+<title>Mind Reader – I know what you’re thinking</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap">
+<style>
+:root{--bg:#0a0618;--a:#7c5cff;--b:#00e5ff;--c:#ff3d8b;--tx:#f3f0ff;--mu:#a79fd0;--card:rgba(255,255,255,.07);--bd:rgba(255,255,255,.16);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;background:radial-gradient(60% 50% at 15% 10%,#2b1a6e 0,transparent 70%),radial-gradient(50% 50% at 90% 90%,#6b1250 0,transparent 70%),var(--bg);color:var(--tx);font-family:Poppins,'Noto Sans Sinhala',system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.07) 1px,transparent 1px);background-size:44px 44px;animation:gr 8s linear infinite;pointer-events:none}
+@keyframes gr{to{background-position:0 44px,44px 0}}
+header{width:100%;max-width:680px;display:flex;justify-content:space-between;align-items:center;padding:16px 18px;position:relative}
+.logo{font-family:Orbitron,sans-serif;font-weight:900;font-size:18px;letter-spacing:.06em;background:linear-gradient(90deg,var(--b),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.r{display:flex;gap:10px;align-items:center;color:var(--mu);font-size:13px}
+button{font:inherit;cursor:pointer}
+#mu{background:var(--card);border:1px solid var(--bd);color:var(--tx);border-radius:12px;width:42px;height:42px;font-size:18px}
+main{width:100%;max-width:560px;padding:8px 16px 40px;position:relative;flex:1;display:flex;align-items:center}
+.card{width:100%;background:var(--card);border:1px solid var(--bd);border-radius:26px;padding:28px 24px;backdrop-filter:blur(14px);box-shadow:0 0 40px rgba(124,92,255,.25),inset 0 0 0 1px rgba(255,255,255,.04);animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(26px,7vw,36px);line-height:1.15;margin:0 0 12px}
+.g{background:linear-gradient(90deg,var(--b),var(--a),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+p{line-height:1.6;margin:0 0 16px;color:var(--mu)}
+.tag{display:inline-block;padding:4px 12px;border-radius:99px;border:1px solid var(--bd);font-size:13px;color:var(--b);margin-bottom:14px}
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;margin-bottom:8px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--b),var(--c));transition:width .4s}
+.st{font-size:13px;color:var(--mu);margin-bottom:18px}
+.big{font-size:clamp(20px,5.2vw,26px);line-height:1.45;color:var(--tx);font-weight:600;margin:0 0 14px}
+.big b{color:var(--b);font-family:Orbitron,sans-serif}
+.hint{font-size:14px}
+input{width:100%;font:inherit;font-size:18px;color:var(--tx);background:rgba(0,0,0,.35);border:1.5px solid var(--bd);border-radius:14px;padding:14px 16px;margin-bottom:14px;outline:none}
+input:focus-visible{border-color:var(--b);box-shadow:0 0 0 3px rgba(0,229,255,.25)}
+.btn{width:100%;border:0;border-radius:14px;padding:15px 18px;font-weight:600;font-size:16px;color:#fff;background:linear-gradient(90deg,var(--a),var(--c));box-shadow:0 8px 24px rgba(255,61,139,.3);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,#mu:focus-visible{outline:3px solid var(--b);outline-offset:2px}
+.btn.o{background:rgba(255,255,255,.08);box-shadow:none;border:1px solid var(--bd);margin-bottom:10px}
+.err{color:#ff7a9c;font-size:14px;min-height:20px;margin:-4px 0 10px}
+.ball{font-size:84px;text-align:center;animation:fl 1.2s ease-in-out infinite;filter:drop-shadow(0 0 24px var(--a))}
+@keyframes fl{50%{transform:translateY(-10px) scale(1.06)}}
+.res{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(44px,13vw,72px);text-align:center;margin:6px 0;animation:pop .5s ease}
+.cen{text-align:center}
+@media (prefers-reduced-motion:reduce){*,body::before{animation:none!important}}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 16px}
+.fr{background:rgba(255,255,255,.08);border:1px solid var(--bd);border-radius:16px;padding:10px 4px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.fr span{font-size:42px;line-height:1.1}.fr b{font-family:Orbitron,sans-serif;color:var(--b);font-size:20px}.fr small{color:var(--mu);font-size:12px}
+#lg{background:var(--card);border:1px solid var(--bd);color:var(--tx);border-radius:12px;height:42px;padding:0 10px;font:inherit}#lg option{color:#000}
+.res.e{font-size:clamp(64px,20vw,96px)}
+.nums{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:14px 0 4px}.nums i{font-style:normal;font-family:Orbitron,sans-serif;font-size:14px;background:rgba(255,255,255,.1);border-radius:8px;padding:6px 0;text-align:center;color:var(--tx)}.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 18px}.chips span{font-size:13px;color:var(--b);border:1px solid var(--bd);border-radius:99px;padding:5px 12px;background:rgba(0,229,255,.06)}footer{position:relative;width:100%;text-align:center;font-size:12px;color:var(--mu);padding:0 16px 18px}</style>
+</head>
+<body>
+<header><div class="logo">MIND READER</div><div class="r"><span id="pg"></span><select id="lg" aria-label="Language"><option value="en">English</option><option value="si">සිංහල</option></select><button id="mu" aria-label="Toggle music">🔊</button></div></header>
+<main><div id="app" style="width:100%"></div></main>
+<footer id="ft"></footer>
+<noscript><p style="position:relative;text-align:center;padding:20px">Please turn on JavaScript to play Mind Reader.</p></noscript>
+<script>
+const app=document.getElementById('app'),Y=new Date().getFullYear();
+let G=[],gi=0,si=0,V={};
+const view=h=>{app.innerHTML=`<section class="card">${h}</section>`;document.getElementById('ft').textContent=t(U.ft)};
+
+/* ---------- music (chiptune loop, synthesized) ---------- */
+let ac,mg,on=true;
+function pluck(m,t,d,v,ty){const o=ac.createOscillator(),g=ac.createGain();o.type=ty;o.frequency.value=440*2**((m-69)/12);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(mg);o.start(t);o.stop(t+d)}
+function music(){
+  if(ac){ac.resume();return}
+  try{
+    ac=new(window.AudioContext||window.webkitAudioContext)();mg=ac.createGain();mg.gain.value=.08;mg.connect(ac.destination);
+    const ch=[[57,60,64],[53,57,60],[60,64,67],[55,59,62]],pat=[0,1,2,1,0,1,2,1];let t=ac.currentTime+.1,n=0;
+    setInterval(()=>{while(t<ac.currentTime+.6){
+      const c=ch[(n>>3)%4],m=c[pat[n%8]]+12+(n%16>7?12:0);
+      pluck(m,t,.18,.5,'square');
+      if(n%2==0)pluck(c[0]-12,t,.35,.9,'triangle');
+      if(n%4==2)pluck(96,t,.04,.12,'square');
+      t+=.19;n++}},120)
+  }catch(e){}
+}
+const sfx=m=>{if(ac&&on)pluck(m,ac.currentTime,.15,.6,'square')};
+document.getElementById('mu').onclick=()=>{if(!ac)music();on=!on;mg.gain.value=on?.08:0;document.getElementById('mu').textContent=on?'🔊':'🔇'};
+
+/* ---------- games ---------- */
+let L='en';try{L=localStorage.getItem('mr_l')||'en'}catch(e){}
+const t=p=>p[L==='si'?1:0],H=(a,b)=>[a,b];
+const U={
+ h:['I can read your mind.','මට ඔබේ හිත කියවන්න පුළුවන්.'],
+ p:['Play a few calculation games and watch me guess your secret numbers, ages and fruits. Enter your email to begin.','ගණන් කිරීමේ ක්‍රීඩා කිහිපයක් ක්‍රීඩා කර, ඔබේ රහස් ඉලක්කම්, වයස සහ පලතුරු මම අනුමාන කරන හැටි බලන්න. ආරම්භ කිරීමට ඔබේ ඊමේල් එක ඇතුළත් කරන්න.'],
+ go:['Start playing','ක්‍රීඩා කිරීම අරඹන්න'],
+ em:['Enter a valid email address, like name@example.com.','name@example.com වැනි නිවැරදි ඊමේල් ලිපිනයක් ඇතුළත් කරන්න.'],
+ nx:['Done, next','ඉවරයි, ඊළඟට'],rd:['I’m ready','මම සූදානම්'],an:['Your answer','ඔබේ පිළිතුර'],rm:['Read my mind','මගේ හිත කියවන්න'],
+ rg:['Reading your mind…','ඔබේ හිත කියවමින්…'],ok:['Was I right?','මම හරිද?'],ng:['Next game','ඊළඟ ක්‍රීඩාව'],fi:['See the finish','අවසානය බලන්න'],
+ dh:['All minds read!','හිත් සියල්ල කියවා අවසන්!'],ag:['Play again','නැවත ක්‍රීඩා කරන්න'],
+ ft:['Made for fun · Your email stays in your browser','විනෝදයට සාදන ලදී · ඔබේ ඊමේල් එක ඔබේ බ්‍රවුසරයේම පවතී'],
+ ch:[['🎮 15 games','🎮 ක්‍රීඩා 15'],['🌐 English · සිංහල','🌐 English · සිංහල'],['🎵 Game music','🎵 ක්‍රීඩා සංගීතය']],
+ bad:['That doesn’t look right. Check your steps and try again.','මේක හරි නැහැ. පියවර පරීක්ෂා කර නැවත උත්සාහ කරන්න.']
+};
+const FR=[['🍎','Apple','ඇපල්'],['🍌','Banana','කෙසෙල්'],['🍇','Grapes','මිදි'],['🍊','Orange','දොඩම්'],['🍓','Strawberry','ස්ට්‍රෝබෙරි'],['🍉','Watermelon','කොමඩු'],['🍍','Pineapple','අන්නාසි'],['🥭','Mango','අඹ'],['🍒','Cherry','චෙරි']];
+const S1=H('Think of any number from <b>1 to 9</b>. Keep it secret.','<b>1 සිට 9</b> දක්වා ඕනෑම ඉලක්කමක් හිතන්න. රහසිං තියාගන්න.');
+const TY=H('Type your final answer.','අවසාන පිළිතුර ටයිප් කරන්න.');
+const MUL=n=>H(`Multiply it by <b>${n}</b>.`,`එය <b>${n}</b>න් ගුණ කරන්න.`),ADD=n=>H(`Add <b>${n}</b>.`,`<b>${n}</b> එකතු කරන්න.`);
+const FOC=H('Look at your answer and focus on it.','ඔබේ පිළිතුර දෙස බලා අවධානය යොමු කරන්න.'),SM=H('Subtract the smaller number from the bigger one.','විශාල අංකයෙන් කුඩා අංකය අඩු කරන්න.');
+const YN=[[H('✅ Yes','✅ ඔව්'),1],[H('❌ No','❌ නැහැ'),0]];
+const MN=[H('January','ජනවාරි'),H('February','පෙබරවාරි'),H('March','මාර්තු'),H('April','අප්‍රේල්'),H('May','මැයි'),H('June','ජූනි'),H('July','ජූලි'),H('August','අගෝස්තු'),H('September','සැප්තැම්බර්'),H('October','ඔක්තෝබර්'),H('November','නොවැම්බර්'),H('December','දෙසැම්බර්')];
+const CARD=b=>[...Array(31)].map((_,i)=>i+1).filter(n=>n&b).map(n=>`<i>${n}</i>`).join('');
+const mk=()=>[
+{n:H('🎂 Number + Age','🎂 ඉලක්කම + වයස'),s:[S1,
+ H('Multiply it by <b>2</b>.','එය <b>2</b>න් ගුණ කරන්න.'),
+ H('Add <b>5</b>.','<b>5</b> එකතු කරන්න.'),
+ H('Multiply your answer by <b>50</b>.','පිළිතුර <b>50</b>න් ගුණ කරන්න.'),
+ {t:H(`Has your birthday already happened this year (${Y})?`,`මේ අවුරුද්දේ (${Y}) ඔබේ උපන්දිනය ඉවරයිද?`),c:1,k:'bd',o:[[H('🎉 Yes, I celebrated','🎉 ඔව්, සමරා ඉවරයි'),1],[H('⏳ Not yet','⏳ තාම නැහැ'),0]]},
+ {t:v=>{const a=v.bd?Y-250:Y-251;return H(`Now add <b>${a}</b>.`,`දැන් <b>${a}</b> එකතු කරන්න.`)}},
+ H('Subtract the <b>year you were born</b> (for example 2001).','<b>ඔබ ඉපදුණු අවුරුද්ද</b> අඩු කරන්න (උදා: 2001).'),
+ {t:H('Type your final answer. It has 3 digits.','අවසාන පිළිතුර ටයිප් කරන්න. එය ඉලක්කම් 3කි.'),i:1,k:'r'}],
+ r:v=>{const r=+v.r;if(!(r>=100&&r<=999))return null;const n=r/100|0,a=r%100;return[`${n} · ${a}`,H(`Your secret number was <b>${n}</b> and you are <b>${a}</b> years old. 😎`,`ඔබ හිතපු ඉලක්කම <b>${n}</b>, ඔබේ වයස අවුරුදු <b>${a}</b>. 😎`)]}},
+{n:H('🍕 Number + Food','🍕 ඉලක්කම + කෑම'),s:[S1,
+ H('Multiply it by <b>9</b>.','එය <b>9</b>න් ගුණ කරන්න.'),
+ H('Add the digits of your answer together (36 becomes 3 + 6).','පිළිතුරේ ඉලක්කම් එකතු කරන්න (36 නම් 3 + 6).'),
+ H('Add <b>7</b>.','<b>7</b> එකතු කරන්න.'),
+ H('Turn your number into a letter: <b>A=1, B=2, C=3</b> and so on.','ඔබේ ඉලක්කම අකුරකට හරවන්න: <b>A=1, B=2, C=3</b> ආදී වශයෙන්.'),
+ H('Think of a <b>food</b> that starts with that letter (in English). Picture it clearly.','ඒ අකුරෙන් (ඉංග්‍රීසියෙන්) පටන් ගන්නා <b>කෑමක්</b> හිතන්න. පැහැදිලිව මවාගන්න.'),
+ H('Hold both in your mind. I’m reading them now…','දෙකම හිතේ තියාගන්න. මම දැන් කියවනවා…')],
+ r:()=>['16 → P',H('Your final number is <b>16</b>, the letter <b>P</b>. You’re thinking of… <b>Pizza</b> 🍕','ඔබේ අවසාන ඉලක්කම <b>16</b>, අකුර <b>P</b>. ඔබ හිතන්නේ… <b>Pizza</b> 🍕')]},
+{n:H('🍎 Fruit Guess','🍎 පලතුරු අනුමානය'),s:[
+ {t:H('Look at the fruits. Secretly pick <b>one fruit</b> and remember its number.','පලතුරු දෙස බලන්න. රහසිං <b>පලතුරක්</b> තෝරාගෙන එහි ඉලක්කම මතක තියාගන්න.'),g:1},
+ H('Multiply its number by <b>3</b>.','එහි ඉලක්කම <b>3</b>න් ගුණ කරන්න.'),
+ H('Add <b>9</b>.','<b>9</b> එකතු කරන්න.'),
+ H('Multiply your answer by <b>3</b> again.','පිළිතුර නැවත <b>3</b>න් ගුණ කරන්න.'),
+ {t:TY,i:1,k:'r'}],
+ r:v=>{const n=(+v.r-27)/9;if(!Number.isInteger(n)||n<1||n>9)return null;const f=FR[n-1];return[f[0],H(`You picked <b>${f[1]}</b> (number ${n})!`,`ඔබ තෝරාගත්තේ <b>${f[2]}</b> (ඉලක්කම ${n})!`)]}},
+{n:H('🍓 Fruit Basket','🍓 පලතුරු කූඩය'),s:[
+ {t:H('Pick <b>two fruits</b> (they can be the same). Remember the <b>first</b> fruit’s number and the <b>second</b> fruit’s number.','<b>පලතුරු දෙකක්</b> තෝරන්න (එකම එක වුණත් කමක් නැහැ). <b>පළමු</b> පලතුරේ සහ <b>දෙවන</b> පලතුරේ ඉලක්කම් මතක තියාගන්න.'),g:1},
+ H('Take the first fruit’s number and multiply it by <b>5</b>.','පළමු පලතුරේ ඉලක්කම <b>5</b>න් ගුණ කරන්න.'),
+ H('Add <b>7</b>.','<b>7</b> එකතු කරන්න.'),
+ H('Double it.','දෙගුණ කරන්න.'),
+ H('Add the second fruit’s number.','දෙවන පලතුරේ ඉලක්කම එකතු කරන්න.'),
+ H('Subtract <b>14</b>.','<b>14</b> අඩු කරන්න.'),
+ {t:TY,i:1,k:'r'}],
+ r:v=>{const r=+v.r,a=r/10|0,b=r%10;if(!Number.isInteger(r)||a<1||a>9||b<1)return null;const x=FR[a-1],y=FR[b-1];return[x[0]+y[0],H(`You picked <b>${x[1]}</b> first and <b>${y[1]}</b> second!`,`ඔබ පළමුව <b>${x[2]}</b> සහ දෙවනුව <b>${y[2]}</b> තෝරාගත්තා!`)]}},
+{n:H('🧮 The Magic 1089','🧮 මායා 1089'),s:[
+ H('Pick a <b>3-digit number</b> whose first and last digits differ by at least 2 (like 852).','පළමු සහ අන්තිම ඉලක්කම් අතර වෙනස අවම වශයෙන් 2ක් වන <b>ඉලක්කම් 3ක අංකයක්</b> තෝරන්න (උදා: 852).'),
+ H('Reverse the digits (852 becomes 258).','ඉලක්කම් ආපසු හරවන්න (852 → 258).'),
+ H('Subtract the smaller number from the bigger one (852 − 258 = 594).','විශාල අංකයෙන් කුඩා අංකය අඩු කරන්න (852 − 258 = 594).'),
+ H('Reverse that answer (594 becomes 495). If it only has two digits, put a 0 in front.','ඒ පිළිතුරත් ආපසු හරවන්න (594 → 495). ඉලක්කම් 2ක් නම් ඉදිරියෙන් 0 දාන්න.'),
+ H('Add those two numbers together (594 + 495).','ඒ අංක දෙක එකතු කරන්න (594 + 495).'),
+ H('Look at your answer and focus on it.','ඔබේ පිළිතුර දෙස බලා අවධානය යොමු කරන්න.')],
+ r:()=>['1089',H('Your answer is <b>1089</b>. It works for every number you could have picked.','ඔබේ පිළිතුර <b>1089</b>. ඔබ තෝරන ඕනෑම අංකයකට මේක වැඩ කරනවා.')]},
+{n:H('✨ Always Five','✨ සැමවිටම පහයි'),s:[
+ H('Think of <b>any number</b>. Big or small, your choice.','<b>ඕනෑම ඉලක්කමක්</b> හිතන්න. විශාල හෝ කුඩා, ඔබේ කැමැත්ත.'),
+ H('Double it.','දෙගුණ කරන්න.'),
+ H('Add <b>10</b>.','<b>10</b> එකතු කරන්න.'),
+ H('Cut the result in half.','පිළිතුර අඩකට බෙදන්න.'),
+ H('Subtract the number you started with.','ඔබ පටන් ගත් අංකය අඩු කරන්න.'),
+ H('Hold your answer in your mind…','ඔබේ පිළිතුර හිතේ තියාගන්න…')],
+ r:()=>['5',H('Your answer is <b>5</b>. Your starting number never mattered.','ඔබේ පිළිතුර <b>5</b>. ඔබ පටන් ගත් අංකය වැදගත් වුණේ නැහැ.')]},
+{n:H('🎈 Birthday Reader','🎈 උපන්දින කියවීම'),s:[
+ H('Take the <b>month</b> you were born as a number (January = 1 … December = 12).','ඔබ ඉපදුණු <b>මාසය</b> අංකයක් ලෙස ගන්න (ජනවාරි = 1 … දෙසැම්බර් = 12).'),
+ MUL(5),ADD(6),MUL(4),ADD(9),MUL(5),
+ H('Add the <b>day of the month</b> you were born (like 14).','ඔබ ඉපදුණු <b>දිනය</b> එකතු කරන්න (උදා: 14).'),
+ {t:TY,i:1,k:'r'}],
+ r:v=>{const x=+v.r-165,m=Math.floor(x/100),d=x%100;if(!Number.isInteger(x)||m<1||m>12||d<1||d>31)return null;return[`${d} ${t(MN[m-1])}`,H(`You were born in <b>${MN[m-1][0]}</b>, on day <b>${d}</b>! 🎈`,`ඔබ ඉපදුණේ <b>${MN[m-1][1]}</b> මාසයේ <b>${d}</b> වෙනිදා! 🎈`)]}},
+{n:H('🎯 The 1001 Trick','🎯 1001 උපක්‍රමය'),s:[
+ H('Think of any <b>3-digit number</b> (like 428).','<b>ඉලක්කම් 3ක</b> ඕනෑම අංකයක් හිතන්න (උදා: 428).'),
+ H('Write it twice in a row (428 becomes 428428).','එය දෙවරක් පිට පිට ලියන්න (428 → 428428).'),
+ H('Divide it by <b>7</b>. It divides exactly, with no remainder.','එය <b>7</b>න් බෙදන්න. ඉතිරියක් නැතිව හරියටම බෙදෙනවා.'),
+ H('Divide your answer by <b>11</b>. Again, no remainder.','පිළිතුර <b>11</b>න් බෙදන්න. නැවතත් ඉතිරියක් නැහැ.'),
+ H('Divide that by <b>13</b>.','ඒක <b>13</b>න් බෙදන්න.'),FOC],
+ r:()=>['🎯',H('Your answer is the <b>3-digit number you started with</b>! (7 × 11 × 13 = 1001)','ඔබේ පිළිතුර ඔබ පටන් ගත් <b>ඉලක්කම් 3ක අංකයමයි</b>! (7 × 11 × 13 = 1001)')]},
+{n:H('🧠 Remainder Magic','🧠 ඉතිරි අගයේ මායාව'),s:[
+ H('Think of a whole number from <b>1 to 100</b>. Keep it secret.','<b>1 සිට 100</b> දක්වා පූර්ණ සංඛ්‍යාවක් හිතන්න. රහසිං තියාගන්න.'),
+ {t:H('Divide it by <b>3</b>. What is the <b>remainder</b>? (0 if it divides exactly)','එය <b>3</b>න් බෙදන්න. <b>ඉතිරිය</b> කීයද? (හරියටම බෙදෙනවා නම් 0)'),i:1,k:'a'},
+ {t:H('Divide it by <b>5</b>. What is the remainder?','එය <b>5</b>න් බෙදන්න. ඉතිරිය කීයද?'),i:1,k:'b'},
+ {t:H('Divide it by <b>7</b>. What is the remainder?','එය <b>7</b>න් බෙදන්න. ඉතිරිය කීයද?'),i:1,k:'c'}],
+ r:v=>{const a=+v.a,b=+v.b,c=+v.c;if(![a,b,c].every(Number.isInteger)||a<0||b<0||c<0||a>2||b>4||c>6)return null;const n=(70*a+21*b+15*c)%105||105;if(n>100)return null;return[String(n),H(`Your secret number is <b>${n}</b>!`,`ඔබේ රහස් අංකය <b>${n}</b>!`)]}},
+{n:H('🌀 Kaprekar’s Loop','🌀 කප්රේකර් චක්‍රය'),s:[
+ H('Pick a <b>4-digit number</b> with at least two different digits (not 1111).','අවම වශයෙන් වෙනස් ඉලක්කම් දෙකක් ඇති <b>ඉලක්කම් 4ක අංකයක්</b> තෝරන්න (1111 නොවේ).'),
+ H('Arrange its digits from largest to smallest, then from smallest to largest. Keep zeros at the front (0123).','එහි ඉලක්කම් විශාලතම සිට කුඩාම දක්වා සහ කුඩාම සිට විශාලතම දක්වා සකසන්න. ඉදිරියේ 0 තියාගන්න (0123).'),
+ SM,
+ H('Repeat the last two steps with your answer (add zeros in front to keep 4 digits). Keep going until the answer stops changing.','අන්තිම පියවර දෙක ඔබේ පිළිතුරෙන් නැවත කරන්න (ඉලක්කම් 4ක් වන සේ ඉදිරියේ 0 දාන්න). පිළිතුර වෙනස් නොවන තුරු කරගෙන යන්න.'),FOC],
+ r:()=>['6174',H('You ended at <b>6174</b>, whatever number you started with! (Kaprekar’s constant)','ඔබ ඕනෑම අංකයකින් පටන් ගත්තත් ඉවර වුණේ <b>6174</b>ට! (කප්රේකර් නියතය)')]},
+{n:H('🔁 The Cyclic Number','🔁 චක්‍රීය අංකය'),s:[
+ H('Think of a number from <b>1 to 6</b>.','<b>1 සිට 6</b> දක්වා අංකයක් හිතන්න.'),
+ H('Using a calculator, multiply <b>142857</b> by your number.','ගණකයන්ත්‍රයකින් <b>142857</b> ඔබේ අංකයෙන් ගුණ කරන්න.'),
+ {t:H('Type just the <b>first digit</b> of your answer.','ඔබේ පිළිතුරේ <b>පළමු ඉලක්කම</b> පමණක් ටයිප් කරන්න.'),i:1,k:'r'}],
+ r:v=>{const n={1:1,2:2,4:3,5:4,7:5,8:6}[+v.r];if(!n)return null;const p=142857*n;return[String(p),H(`You chose <b>${n}</b>, and 142857 × ${n} = <b>${p}</b>. The same six digits, just rotated!`,`ඔබ තෝරාගත්තේ <b>${n}</b>, 142857 × ${n} = <b>${p}</b>. එකම ඉලක්කම් හය, භ්‍රමණය වුණා විතරයි!`)]}},
+{n:H('⭕ The Missing Digit','⭕ නැතිවූ ඉලක්කම'),s:[
+ H('Think of a number with <b>3 or more digits</b>, using different digits (like 5382).','වෙනස් ඉලක්කම් සහිත <b>ඉලක්කම් 3ක් හෝ ඊට වැඩි</b> අංකයක් හිතන්න (උදා: 5382).'),
+ H('Scramble its digits to make a different number (like 2853).','ඉලක්කම් අනුපිළිවෙල මාරු කර වෙනත් අංකයක් සාදන්න (උදා: 2853).'),SM,
+ H('Circle any <b>one digit</b> of your answer (not a zero) in your mind.','පිළිතුරේ <b>එක ඉලක්කමක්</b> (0 නොවන) හිතින් රවුම් කරගන්න.'),
+ H('Add up all the <b>other</b> digits. Ignore the circled one.','<b>අනෙක්</b> ඉලක්කම් සියල්ල එකතු කරන්න. රවුම් කළ එක නොගන්න.'),
+ {t:H('Type that total.','ඒ එකතුව ටයිප් කරන්න.'),i:1,k:'r'}],
+ r:v=>{const s=+v.r;if(!Number.isInteger(s)||s<1)return null;const d=s%9?9-s%9:9;return[String(d),H(`The digit you circled was <b>${d}</b>!`,`ඔබ රවුම් කළ ඉලක්කම <b>${d}</b>!`)]}},
+{n:H('🐚 Fibonacci Sum','🐚 ෆිබොනාච්චි එකතුව'),s:[
+ H('Write down <b>any two numbers</b> (small ones, like 3 and 8).','<b>ඕනෑම අංක දෙකක්</b> ලියන්න (කුඩා ඒවා, උදා: 3 සහ 8).'),
+ H('Add them to get the 3rd number. Add the 2nd and 3rd to get the 4th, and keep going until you have <b>10 numbers</b>.','ඒ දෙක එකතු කර 3වන අංකය ලබාගන්න. 2වන සහ 3වන එකතු කර 4වන අංකය ලබාගන්න. අංක <b>10ක්</b> වන තුරු මෙහෙම කරගෙන යන්න.'),
+ {t:H('Tell me your <b>7th number</b>.','ඔබේ <b>7වන අංකය</b> මට කියන්න.'),i:1,k:'r'}],
+ r:v=>{const n=+v.r;if(!Number.isInteger(n)||n<1)return null;return[String(n*11),H(`The total of all 10 numbers is <b>${n*11}</b>. Add them up and check!`,`අංක 10ම එකතුව <b>${n*11}</b>. එකතු කර බලන්න!`)]}},
+{n:H('🃏 Mind Cards','🃏 මනස් කාඩ්පත්'),s:[
+ H('Think of a number from <b>1 to 31</b>. I’ll show you 5 cards. Tell me if your number is on each one.','<b>1 සිට 31</b> දක්වා අංකයක් හිතන්න. මම කාඩ්පත් 5ක් පෙන්වන්නම්. ඔබේ අංකය ඒවායේ තිබේදැයි කියන්න.'),
+ ...[1,2,4,8,16].map(b=>({t:H(`Is your number on this card?<span class="nums">${CARD(b)}</span>`,`ඔබේ අංකය මේ කාඩ්පතේ තිබේද?<span class="nums">${CARD(b)}</span>`),c:1,k:'b'+b,o:YN}))],
+ r:v=>{const n=[1,2,4,8,16].reduce((s,b)=>s+(v['b'+b]?b:0),0);return n?[String(n),H(`Your number is <b>${n}</b>!`,`ඔබේ අංකය <b>${n}</b>!`)]:['🤔',H('You said no to every card. Pick a number from 1 to 31 and try again!','ඔබ සියලු කාඩ්පතට නැහැ කිව්වා. 1 සිට 31 අතර අංකයක් හිතා නැවත උත්සාහ කරන්න!')]}},
+{n:H('❤️ Favourite Digit','❤️ ප්‍රියතම ඉලක්කම'),s:[
+ H('Pick your favourite digit from <b>1 to 9</b>.','<b>1 සිට 9</b> දක්වා ඔබේ ප්‍රියතම ඉලක්කම තෝරන්න.'),MUL(9),
+ H('On a calculator, multiply <b>12345679</b> by your answer.','ගණකයන්ත්‍රයකින් <b>12345679</b> ඔබේ පිළිතුරෙන් ගුණ කරන්න.'),FOC],
+ r:()=>['🔁',H('Your answer is your favourite digit written <b>9 times</b>! (12345679 × 9 = 111111111)','ඔබේ පිළිතුර ඔබේ ප්‍රියතම ඉලක්කම <b>9 වතාවක්</b> ලියූ අංකයක්! (12345679 × 9 = 111111111)')]}
+];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---------- screens ---------- */
+const lg=document.getElementById('lg');let scr,E;
+lg.value=L;document.documentElement.lang=L;
+lg.onchange=()=>{const e=document.getElementById('em');if(e)E=e.value;L=lg.value;document.documentElement.lang=L;try{localStorage.setItem('mr_l',L)}catch(x){}scr()};
+function gate(){
+  scr=gate;let e=E;if(e==null){try{e=localStorage.getItem('mr_email')||''}catch(x){e=''}}
+  document.getElementById('pg').textContent='';
+  view(`<div class="ball">🔮</div><h1 class="cen"><span class="g">${t(U.h)}</span></h1><p class="cen">${t(U.p)}</p><div class="chips">${U.ch.map(c=>`<span>${t(c)}</span>`).join('')}</div>
+  <input id="em" type="email" placeholder="you@example.com" autocomplete="email" value="${e}">
+  <div class="err" id="er"></div><button class="btn" id="go">${t(U.go)}</button>`);
+  const em=document.getElementById('em'),go=()=>{
+    const v=em.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){document.getElementById('er').textContent=t(U.em);return}
+    try{localStorage.setItem('mr_email',v)}catch(x){}
+    music();begin()};
+  document.getElementById('go').onclick=go;em.onkeydown=k=>{if(k.key==='Enter')go()}
+}
+function begin(){const g=mk();G=[g[0],...shuffle(g.slice(1)).slice(0,7)];gi=0;si=0;V={};step()}
+function step(){
+  scr=step;const g=G[gi],s0=g.s[si],s=Array.isArray(s0)?{t:s0}:s0,tx=t(typeof s.t==='function'?s.t(V):s.t);
+  document.getElementById('pg').textContent=t(H(`Game ${gi+1} of ${G.length}`,`ක්‍රීඩාව ${gi+1} / ${G.length}`));
+  let ui;
+  if(s.c)ui=s.o.map(o=>`<button class="btn o" onclick="pick('${s.k}',${o[1]})">${t(o[0])}</button>`).join('');
+  else if(s.i)ui=`<input id="in" type="number" inputmode="numeric" placeholder="${t(U.an)}"><div class="err" id="er"></div><button class="btn" onclick="sub('${s.k}')">${t(si==g.s.length-1?U.rm:U.nx)}</button>`;
+  else ui=`<button class="btn" onclick="nx()">${t(si==g.s.length-1?U.rd:U.nx)}</button>`;
+  const gr=s.g?`<div class="fg">${FR.map((f,i)=>`<div class="fr"><span>${f[0]}</span><b>${i+1}</b><small>${f[L==='si'?2:1]}</small></div>`).join('')}</div>`:'';
+  view(`<span class="tag">${t(g.n)}</span><div class="bar"><i style="width:${(si+1)/g.s.length*100}%"></i></div><div class="st">${t(H(`Step ${si+1} of ${g.s.length}`,`පියවර ${si+1} / ${g.s.length}`))}</div><p class="big">${tx}</p>${gr}${ui}`);
+  const inp=document.getElementById('in');if(inp){inp.focus();inp.onkeydown=k=>{if(k.key==='Enter')sub(s.k)}}
+}
+function nx(){sfx(76);si++;if(si>=G[gi].s.length)reveal();else step()}
+function pick(k,v){V[k]=v;nx()}
+function sub(k){const x=document.getElementById('in').value;V[k]=x;if(si<G[gi].s.length-1){if(x==='')return;nx();return}if(!G[gi].r(V)){document.getElementById('er').textContent=t(U.bad);return}reveal()}
+function reveal(){
+  sfx(81);scr=show;
+  view(`<div class="ball">🔮</div><p class="cen big">${t(U.rg)}</p>`);
+  setTimeout(()=>{if(scr===show){sfx(88);show()}},2000)
+}
+function show(){
+  scr=show;const g=G[gi],r=g.r(V),last=gi==G.length-1,e=[...r[0]].length<4&&/\p{Extended_Pictographic}/u.test(r[0]);
+  view(`<div class="cen"><span class="tag">${t(g.n)}</span></div><div class="res ${e?'e':'g'}">${r[0]}</div><p class="big cen">${t(r[1])}</p><p class="cen">${t(U.ok)}</p>
+  <button class="btn" onclick="nextGame()">${t(last?U.fi:U.ng)}</button>`)
+}
+function nextGame(){gi++;si=0;V={};if(gi>=G.length)done();else step()}
+function done(){
+  scr=done;document.getElementById('pg').textContent='';
+  view(`<div class="ball">🏆</div><h1 class="cen"><span class="g">${t(U.dh)}</span></h1><p class="cen">${t(H(`You finished all ${G.length} games. Play again and the order changes.`,`ඔබ ක්‍රීඩා ${G.length}ම ඉවර කළා. නැවත ක්‍රීඩා කළොත් අනුපිළිවෙල වෙනස් වෙනවා.`))}</p><button class="btn" onclick="begin()">${t(U.ag)}</button>`)
+}
+gate();
+</script>
+</body>
+</html>
